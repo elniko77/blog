@@ -1,0 +1,30 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: blog-ingress
+  namespace: hugo
+  annotations:
+    kubernetes.io/ingress.class: "traefik"
+spec:
+  # rules:
+  #   - host:
+  #     http:
+  #       paths:
+  #       - path: /
+  #         pathType: Prefix
+  #         backend:
+  #           service:
+  #             name: hugo
+  #             port:
+  #               number: 80
+  rules:
+  - host: blog.nss.net
+    http:
+      paths:
+        - path: / 
+          pathType: Prefix
+          backend:
+            service:
+              name: hugo
+              port:
+                number: 80

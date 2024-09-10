@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hugo
+  namespace: hugo
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+       app: hugo
+  template:
+     metadata:
+        labels:
+           app: hugo
+     spec:
+       containers:
+       - name: website
+         image: elniko77/hugo-blog:0.0.1
+         imagePullPolicy: Always
+         ports:
+         - containerPort: 80
